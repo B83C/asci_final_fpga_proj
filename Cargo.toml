@@ -1,0 +1,24 @@
+[package]
+name = "asic"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+clap = { version = "4.6.1", features = ["derive"] }
+doublebuf = "0.1.0"
+histo = "1.0.0"
+hotpath = "0.16.0"
+macroquad = "0.4"
+marlin = { version = "0.16.0", features = ["verilog", "spade"] }
+marlin-test = "0.2.0"
+snafu = "=0.8.9"
+
+[dev-dependencies]
+marlin = { version = "0.16.0", features = ["verilog", "spade"] }
+snafu = "=0.8.9"
+
+
+[features]
+hotpath = ["hotpath/hotpath"]
+hotpath-cpu = ["hotpath/hotpath-cpu"]
+hotpath-alloc = ["hotpath/hotpath-alloc"]

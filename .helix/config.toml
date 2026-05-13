@@ -1,0 +1,8 @@
+[keys.normal.space.j.v]
+v = ":run-shell-command zellij run -f -- just vivado"
+b = ":run-shell-command zellij run -f -- just vivado_bitstream"
+
+[keys.normal.space.j]
+u = ":run-shell-command zellij run -f -- just upload"
+s = ":run-shell-command zellij run -f -- just surfer"
+V = ":run-shell-command zellij run -f -- just run_verbose"

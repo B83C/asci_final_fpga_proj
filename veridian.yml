@@ -1,0 +1,21 @@
+include_dirs:
+  - src
+# list of directories to recursively search for SystemVerilog/Verilog sources
+source_dirs:
+  - src
+
+verilator:
+  # verilator configuration
+  syntax:
+    enabled: true
+    path: "verilator"
+    # default: specified below
+    args:
+      - --lint-only
+      - --sv
+      - -y src
+      # - -I./src
+      # - -I./src/i2c_vl6180x
+      # - -Wall
+
+log_level: Error
