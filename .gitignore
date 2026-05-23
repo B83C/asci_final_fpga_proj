@@ -11,3 +11,4 @@ obj_dir/
 *.str
 # **/*.fst
 # **/*.vcd
+librelane/runs/

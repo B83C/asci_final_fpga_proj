@@ -1,0 +1,26 @@
+# Yosys synthesis script for top_vga
+# Usage: yosys -s ys/top_vga.ys
+
+# Load slang plugin for SystemVerilog support
+plugin -i slang
+
+# Read ALL source files in one call so module defs are visible across files
+read_slang -Wno-duplicate-definition ./src/defs.svh ./src/state.sv ./src/debouncer.sv ./src/generic_counter.sv ./src/generic_countdown_counter.sv ./src/lfsr.sv ./src/timing_counter.sv ./src/pipe.sv ./src/ascii_rom.sv ./src/vga_if.sv ./src/vga_timing.sv ./src/display_pipeline.sv ./src/top_vga.sv
+
+# Check hierarchy
+hierarchy -check -top top_vga
+
+# Generic synthesis
+synth -top top_vga
+
+# Map to generic gates
+abc -g gates
+
+# Remove unused wires/cells
+clean
+
+# Write synthesized netlist
+write_verilog -noattr -noexpr ./build/top_vga_synth.v
+
+# Write JSON netlist for librelane
+write_json ./build/top_vga_synth.json

@@ -1,4 +1,4 @@
-open_project ../asic-vivado/hdmi_test/hdmi_test.xpr
+open_project ./vivado-project-files/hdmi_test/hdmi_test.xpr
 
 remove_files [get_files -filter {IS_AVAILABLE == 0}]
 

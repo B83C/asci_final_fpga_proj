@@ -1,6 +1,6 @@
 `timescale 1ns / 1ps
 `include "defs.svh"
-import display_params::*;
+// import display_params::*;
 
 module top_vga #(
     parameter unsigned CLK_HZ = 75000000
@@ -109,16 +109,19 @@ module top_vga #(
                 (sys_state == SPAM)? bi[1] :
                 0);
 
-  logic [5:0] spam_count;
-  generic_counter #(
-      .MAX(64)
-  ) spam_counter (
-      .clk((sys_state == TRIGGERED) && bi[0]),
-      .rstn(rstn && !(sys_state == IDLE)),
-      .en(1),
-      .ending(),
-      .x(spam_count)
-  );
+  logic bi_0_d1;
+  logic bi_0_rise;
+  always @(posedge clk) bi_0_d1 <= bi[0];
+  assign bi_0_rise = bi[0] && !bi_0_d1;
+
+  logic [1:0] spam_count;
+  always @(posedge clk) begin
+    if (!rstn || sys_state == IDLE) begin
+      spam_count <= 0;
+    end else if (sys_state == TRIGGERED && bi_0_rise) begin
+      spam_count <= spam_count + 1;
+    end
+  end
   wire  halt = (sys_state == TRIGGERED) && (spam_count >= 20);
   logic timed_out;
 
@@ -163,8 +166,8 @@ module top_vga #(
     end
   end
 
-  localparam N_H = $clog2(H);
-  localparam N_V = $clog2(V);
+  localparam unsigned N_H = $clog2(H);
+  localparam unsigned N_V = $clog2(V);
 
   wire hsync, vsync, hactive, vactive, xc_end, yc_end;
   wire [N_H-1:0] x;

@@ -1,6 +1,6 @@
 `timescale 1ns / 1ps
 
-module ram #(
+module ascii_rom #(
     parameter int WIDTH = 16,
     parameter int DEPTH = 8,
     parameter int ADDR_BITS = $clog2(DEPTH)
@@ -11,7 +11,7 @@ module ram #(
 );
   (* ram_style = "block" *) logic [WIDTH-1:0] irom[DEPTH];
   initial begin
-    $readmemh("./src/ascii.rom", irom);
+    $readmemh("ascii.rom", irom);
   end
 
   always @(posedge clk) begin

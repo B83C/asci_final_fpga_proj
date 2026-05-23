@@ -284,7 +284,7 @@ module display_pipeline #(
   wire [C_V - 1 : 0][C_H - 1 : 0] char_buf;
   reg  [C_V - 1 : 0][C_H - 1 : 0] char_buf_q;
 
-  ram #(
+  ascii_rom #(
       .WIDTH(C_H * C_V),
       .DEPTH(128)
   ) ascii (
