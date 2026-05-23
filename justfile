@@ -44,6 +44,11 @@ yosys:
     mkdir -p build
     yosys -s ys/top_vga.ys
 
+# Convert SV to flattened Verilog (RTL-level, no gate mapping)
+flatten:
+    mkdir -p build
+    yosys -s ys/flatten.ys
+
 # Synthesize top_vga with Vivado and write gate-level netlist
 vivado_netlist:
     vivado -mode batch -source ys/synth_netlist.tcl
