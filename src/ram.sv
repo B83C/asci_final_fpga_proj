@@ -3,7 +3,6 @@
 module ram #(
     parameter int WIDTH = 16,
     parameter int DEPTH = 8,
-    parameter string BINARY_FILE = "rom",
     parameter int ADDR_BITS = $clog2(DEPTH)
 ) (
     input clk,
@@ -12,7 +11,7 @@ module ram #(
 );
   (* ram_style = "block" *) logic [WIDTH-1:0] irom[DEPTH];
   initial begin
-    $readmemh(BINARY_FILE, irom);
+    $readmemh("./src/ascii.rom", irom);
   end
 
   always @(posedge clk) begin

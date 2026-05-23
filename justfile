@@ -39,6 +39,15 @@ run_verbose:
 spade:
     swim build 
 
+# Synthesize top_vga with Yosys and write gate-level netlist
+yosys:
+    mkdir -p build
+    yosys -s ys/top_vga.ys
+
+# Synthesize top_vga with Vivado and write gate-level netlist
+vivado_netlist:
+    vivado -mode batch -source ys/synth_netlist.tcl
+
 all:
     just vivado 
     just upload 

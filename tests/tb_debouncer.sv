@@ -6,13 +6,10 @@ module tb_debouncer;
   logic raw_input;
   logic debounced_output;
 
-  // CYCLES=64 → CyclesRounded=128, MIDPOINT=6
-  // Integrator counts 0→1→…→127→0→… when en=1
-  // val[6] = 1 for counter ∈ [64,127]  (64 consecutive cycles)
-  // val[6] = 0 for counter ∈ [0,63]    (64 consecutive cycles)
-  // → output stays constant for 64 cycles at a time
+  // DEPTH=8 → shift register must see 8 consecutive identical samples
+  // → output changes after 8 consecutive cycles
   debouncer #(
-      .CYCLES(64),
+      .DEPTH(8),
       .INVERT(1)
   ) dut (
       .*
@@ -39,7 +36,7 @@ module tb_debouncer;
   endtask
 
   initial begin
-    $display("=== debouncer testbench (CYCLES=64) ===");
+    $display("=== debouncer testbench (DEPTH=8) ===");
     rstn      = 1;
     raw_input = 1;  // inactive (active-low with INVERT=1)
     @(posedge clk);
@@ -60,7 +57,7 @@ module tb_debouncer;
     `CHECK(debounced_output == 1, "press: output goes high");
 
     // Verify stability: once output is high, it should stay high
-    // for at least 40 consecutive cycles (val[6] stays 1 for 64 cycles)
+    // for at least 40 consecutive cycles
     for (int i = 0; i < 40; i++) begin
       `CHECK(debounced_output == 1, $sformatf("press: stable at cycle %0d", i));
       @(posedge clk);

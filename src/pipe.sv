@@ -11,20 +11,20 @@ module pipe #(
     input  [M - 1:0] x,
     output [M - 1:0] y
 );
-  reg [M - 1:0] counter[STAGES] = '{STAGES{0}};
+  reg [M - 1:0] counter[STAGES];
 
-
-  always @(posedge clk, negedge rstn) begin
-    if (en) begin
-      counter[0] <= x;
-      for (int unsigned i = 1; i < STAGES; i++) begin
-        counter[i] <= counter[i-1];
+  genvar i;
+  generate
+    for (i = 0; i < STAGES; i = i + 1) begin : gen_stage
+      always @(posedge clk, negedge rstn) begin
+        if (!rstn) begin
+          counter[i] <= 0;
+        end else if (en) begin
+          counter[i] <= (i == 0) ? x : counter[i-1];
+        end
       end
     end
-    if (!rstn) begin
-      counter <= '{STAGES{0}};
-    end
-  end
+  endgenerate
 
   assign y = counter[STAGES-1];
 endmodule
