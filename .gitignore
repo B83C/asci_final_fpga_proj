@@ -1,4 +1,6 @@
 build/
+obj_dir/
+.surfer/
 
 
 # Added by cargo
@@ -6,3 +8,6 @@ build/
 /target
 *.log
 *.jou
+*.str
+# **/*.fst
+# **/*.vcd

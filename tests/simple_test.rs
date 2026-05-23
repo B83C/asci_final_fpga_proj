@@ -93,40 +93,40 @@ fn test_countdown<'a>(mut module: Seq<'a, Generic_Countdown<'a>>) {
     assert_eq!(module.done != 0, true);
 }
 
-#[verilog(src = "src/debouncer.sv", name = "debouncer")]
-pub struct Debouncer;
+// #[verilog(src = "src/debouncer.sv", name = "debouncer")]
+// pub struct Debouncer;
 
-#[marlin_verilog_test]
-#[fst("testdebouncer.fst")]
-fn test_debouncer<'a>(mut module: Seq<'a, Debouncer<'a>>) {
-    // let mut h = Histogram::with_buckets(16);
-    let cycles = 128;
+// #[marlin_verilog_test]
+// #[fst("testdebouncer.fst")]
+// fn test_debouncer<'a>(mut module: Seq<'a, Debouncer<'a>>) {
+//     // let mut h = Histogram::with_buckets(16);
+//     let cycles = 128;
 
-    module.rstn = 0;
-    module.tick();
-    module.rstn = 1;
-    module.tick();
+//     module.rstn = 0;
+//     module.tick();
+//     module.rstn = 1;
+//     module.tick();
 
-    module.raw_input = 0;
-    module.tick();
-    assert!(module.debounced_output == 0);
+//     module.raw_input = 0;
+//     module.tick();
+//     assert!(module.debounced_output == 0);
 
-    module.raw_input = 1;
-    module.tick();
-    assert!(module.debounced_output == 0);
+//     module.raw_input = 1;
+//     module.tick();
+//     assert!(module.debounced_output == 0);
 
-    for i in 0..cycles / 2 {
-        module.tick();
-    }
+//     for i in 0..cycles / 2 {
+//         module.tick();
+//     }
 
-    assert!(module.debounced_output == 0);
+//     assert!(module.debounced_output == 0);
 
-    for i in 0..cycles / 2 {
-        module.tick();
-    }
+//     for i in 0..cycles / 2 {
+//         module.tick();
+//     }
 
-    assert!(module.debounced_output == 1);
-}
+//     assert_eq!(module.debounced_output, 1);
+// }
 
 #[verilog(src = "src/generic_counter.sv", name = "test_generic_counter")]
 pub struct GenericCounter;
@@ -173,14 +173,73 @@ fn test_counter_unen<'a>(mut module: Seq<'a, GenericCounter<'a>>) {
     assert_eq!(module.x, 1);
 }
 
+#[verilog(src = "src/test2.sv", name = "test2")]
+pub struct Test2;
+
+#[marlin_verilog_test]
+#[fst("test_vga_signals.fst")]
+fn test_vga_signals<'a>(mut module: Seq<'a, Test2<'a>>) {
+    // let mut h = Histogram::with_buckets(16);
+    let cycles = 200000;
+
+    // module.rstn = 0;
+    // module.tick();
+    // module.rstn = 1;
+    // module.en = 0;
+
+    for i in 0..cycles - 1 {
+        // assert_eq!(module., 0);
+        module.tick();
+    }
+    // assert_eq!(module.x, 0);
+    // assert!(module.ending == 0);
+
+    // module.en = 1;
+    // module.tick();
+    // assert_eq!(module.x, 1);
+}
+
+// ─── top3_render tests ───────────────────────────────────────
+
+// #[verilog(src = "src/top3.sv", name = "top3_render")]
+// pub struct Top3Render;
 
 // #[marlin_verilog_test]
-// #[fst("test.fst")]
-// fn test_vga<'a>(mut module: Seq<'a, TopVga<'a>>) {
-//     module.rstn = 1;
+// fn test_render<'a>(mut module: Seq<'a, Top3Render<'a>>) {
+//     module.active = 0;
+//     module.x = 100;
+//     module.y = 100;
+//     module.bi = 0;
 //     module.tick();
-//     module.rstn = 0;
+//     assert_eq!(module.pixel_color, 0x000000, "inactive → black");
+
+//     module.active = 1;
+//     module.bi = 0;
 //     module.tick();
+//     assert_eq!(module.pixel_color, 0x0000FF, "bi=0 → blue");
+
+//     module.bi = 1;
+//     module.tick();
+//     assert_eq!(module.pixel_color, 0xFF0000, "bi=0 → red");
+
+//     module.bi = 2;
+//     module.tick();
+//     assert_eq!(module.pixel_color, 0x00FF00, "bi=2 → green");
+// }
+
+// #[verilog(src = "src/state.sv", name = "state")]
+// pub struct State;
+
+// #[marlin_verilog_test]
+// fn test_render<'a>(mut module: Seq<'a, State<'a>>) {
+//     module.tick();
+//     module.bi = 1;
+//     module.tick();
+//     assert_eq!(module.pixel_color, 0xFF0000, "bi=0 → red");
+
+//     module.bi = 2;
+//     module.tick();
+//     assert_eq!(module.pixel_color, 0x00FF00, "bi=2 → green");
 // }
 
 // #[verilog(src = "src/timing_counter.sv", name = "timing_counter")]

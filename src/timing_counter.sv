@@ -13,7 +13,6 @@ module timing_counter #(
 
     output reg sync,
 
-
     output [N - 1:0] x,
 
     output active,
@@ -29,13 +28,15 @@ module timing_counter #(
     if (en) counter <= ending ? 0 : counter + 1;
     if (!rstn) begin
       counter <= 0;
-      sync <= 0;
+      // sync <= 0;
     end else begin
-      sync <= (counter >= DISP + FP) && (counter < DISP + FP + SW);
+      // sync <= (counter >= DISP + FP) && (counter < DISP + FP + SW);
     end
   end
 
   assign x = counter;
 
-  assign active = counter < DISP;
+  assign sync = rstn && (counter >= DISP + FP) && (counter < DISP + FP + SW);
+
+  assign active = rstn && counter < DISP;
 endmodule

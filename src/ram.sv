@@ -10,7 +10,7 @@ module ram #(
     input [ADDR_BITS - 1:0] addr,
     output logic [WIDTH - 1:0] data
 );
-  logic [WIDTH-1:0] irom[DEPTH];
+  (* ram_style = "block" *) logic [WIDTH-1:0] irom[DEPTH];
   initial begin
     $readmemh(BINARY_FILE, irom);
   end

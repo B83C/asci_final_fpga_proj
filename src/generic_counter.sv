@@ -2,7 +2,7 @@
 
 //TODO Marlin does not support constant expression for now
 module generic_counter #(
-    parameter unsigned MAX = 1280,
+    parameter unsigned MAX =1280,
     parameter unsigned ONESHOT = 0,
     parameter unsigned N = $clog2(MAX)
 ) (

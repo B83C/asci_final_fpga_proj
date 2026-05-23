@@ -1,1 +1,4 @@
 name = "src"
+
+[libraries]
+dvi.git = "https://git.sr.ht/~acqrel/dvi"

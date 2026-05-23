@@ -1,2 +1,8 @@
+[libraries.dvi]
+commit = "2e8fc3f018726c4d3ecf5f1f60e0a85741995ec9"
+
+[libraries.gowin_primitives]
+commit = "c6a5e7c8b7c1845fb73192bc2f0e710e814a97d7"
+
 [spade]
-commit = "b86fc89d7443d0063806f869aeb787f76350e247"
+commit = "9ff9efa54cb559ab3d55dee04c798a5857158aed"

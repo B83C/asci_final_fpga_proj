@@ -1,3 +1,4 @@
+use std::error::Error;
 use std::path::Path;
 use std::sync::atomic::{AtomicBool, AtomicU8, Ordering};
 use std::sync::mpsc::sync_channel;
@@ -36,6 +37,16 @@ fn window_conf() -> Conf {
 }
 
 // #[hotpath::measure]
+// #[macroquad::main(window_conf)]
+// #[hotpath::main]
+// async fn main() {
+//     let e = run().await.to_string();
+//     // if let Err(e) =  {
+//     // let source = e.source();
+//     println!("{}", e.to_string());
+//     // }
+// }
+
 #[macroquad::main(window_conf)]
 #[hotpath::main]
 #[snafu::report]
@@ -61,15 +72,16 @@ async fn main() -> Result<(), Whatever> {
     // let bytes = ArcSwap::new(Arc::new([255u8; W * H * 4]));
     let texture = Texture2D::from_rgba8(W as u16, H as u16, &bytes);
 
-    thread::spawn(move || {
+    let handle = thread::spawn(move || -> Result<(), String> {
         let runtime = VerilatorRuntime::new(
             &Path::new("build"),
-            &["src/top.sv".as_ref()],
+            &["src/top_simulation.sv".as_ref()],
             &["src".as_ref()],
             [],
             VerilatorRuntimeOptions::default(),
         )
         .unwrap();
+        // .map_err(|e| e.source().map(|e| e.to_string()).unwrap())?;
 
         let mut top = runtime
             .create_model::<TopVga>(&marlin::verilator::VerilatedModelConfig {
@@ -79,12 +91,13 @@ async fn main() -> Result<(), Whatever> {
                 ..Default::default()
             })
             .unwrap();
+        // .map_err(|e| e.source().map(|e| e.to_string()).unwrap())?;
 
         std::fs::write(
             "build/surfer.ron",
             r#"(state_file:"build/state.bincode",top_names:{"build/vcd.fst": "TOP::top_simulation"})"#,
-        )
-        .unwrap();
+        ).unwrap();
+        // .map_err(|e| e.to_string())?;
 
         let mut internal_bytes = vec![255u8; W * H * 4];
         let mut vcd = if args.dump_vcd {
@@ -154,6 +167,7 @@ async fn main() -> Result<(), Whatever> {
             }
         }
         print!("Worker thread exited ");
+        Ok(())
     });
 
     clear_background(BLACK);
@@ -162,10 +176,10 @@ async fn main() -> Result<(), Whatever> {
     let mut last_keys_text = String::new();
     let mut last_key_time = 0.0;
 
-    loop {
+    while !handle.is_finished() {
         if is_key_pressed(KeyCode::Q) {
             trigger_exit.send(()).ok();
-            break Ok(());
+            break;
         }
 
         let mut keys = 0xF;
@@ -258,4 +272,8 @@ async fn main() -> Result<(), Whatever> {
         next_frame().await;
         sleep(Duration::from_millis(10));
     }
+    if let Ok(Err(e)) = handle.join() {
+        println!("Error returned \n {e}");
+    }
+    Ok(())
 }

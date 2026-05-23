@@ -1,6 +1,6 @@
 use marlin::{verilator::tracing::Trace, verilog::prelude::*};
 
-#[verilog(src = "src/top.sv", name = "top_simulation")]
+#[verilog(src = "src/top_simulation.sv", name = "top_simulation")]
 pub struct TopVga;
 
 impl TopVga<'_> {

@@ -8,6 +8,8 @@ add_files [glob -nocomplain ./src/*.sv]
 reset_run synth_1
 reset_run impl_1
 
+set_property top top [current_fileset]
+
 # Launch Synthesis
 launch_runs synth_1
 wait_on_run synth_1
