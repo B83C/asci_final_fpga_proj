@@ -56,42 +56,5 @@ module debouncer #(
     end
   end
 
-  // wire filtered = buffers[1];
-
-  // wire flipped = filtered ^ INVERT;
-
-  // wire counter_end;
-
-  // generic_counter #(
-  //     .MAX(CyclesRounded)
-  // ) clock_divider (
-  //     .clk(clk),
-  //     .rstn(rstn),
-  //     .en(1),
-  //     .ending(counter_end),
-  //     .x()
-  // );
-
-  // logic [Next2Pos - 1:0] val;
-  // generic_counter #(
-  //     .MAX(CyclesRounded)
-  // ) integrator (
-  //     .clk(clk),
-  //     .rstn(rstn && !counter_end),
-  //     .en(flipped),
-  //     .ending(),
-  //     .x(val)
-  // );
-
-  // assign debounced_output = val[MIDPOINT];
-
-  // always @(posedge clk) begin
-  //   // Listens for positive edge
-  //   // triggered <= counter_end && (val[MIDPOINT] && !debounced_output);
-  //   if (counter_end) begin
-  //     debounced_output <= val[MIDPOINT];
-  //   end
-  // end
-
 endmodule
 

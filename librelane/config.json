@@ -1,9 +1,0 @@
-{
-  "DESIGN_NAME": "top_vga_flat",
-  "VERILOG_FILES": [
-    "/home/b83c/hw/asic/asic/build/top_vga_flat.v"
-  ],
-  "CLOCK_PORT": "clk",
-  "CLOCK_PERIOD": 13.333,
-  "ERROR_ON_SYNTH_CHECKS": false
-}

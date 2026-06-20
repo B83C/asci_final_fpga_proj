@@ -1,0 +1,402 @@
+#-----------------------------------------------------------
+# Vivado v2025.2 (64-bit)
+# SW Build 6299465 on Fri Nov 14 12:34:56 MST 2025
+# IP Build 6300035 on Fri Nov 14 10:48:45 MST 2025
+# SharedData Build 6298862 on Thu Nov 13 04:50:51 MST 2025
+# Start of session at: Sat Jun 20 23:42:22 2026
+# Process ID         : 329598
+# Current directory  : /home/b83c/hw/asic_xyz/asic/vivado-project-files/reaction_meter_xzy/reaction_meter_xzy.runs/synth_1
+# Command line       : vivado -log top_basys3.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source top_basys3.tcl
+# Log file           : /home/b83c/hw/asic_xyz/asic/vivado-project-files/reaction_meter_xzy/reaction_meter_xzy.runs/synth_1/top_basys3.vds
+# Journal file       : /home/b83c/hw/asic_xyz/asic/vivado-project-files/reaction_meter_xzy/reaction_meter_xzy.runs/synth_1/vivado.jou
+# Running On         : g7-station
+# Platform           : cachyos
+# Operating System   : CachyOS
+# Processor Detail   : Intel(R) Core(TM) i5-8300H CPU @ 2.30GHz
+# CPU Frequency      : 1894.855 MHz
+# CPU Physical cores : 4
+# CPU Logical cores  : 8
+# Host memory        : 16432 MB
+# Swap memory        : 16431 MB
+# Total Virtual      : 32863 MB
+# Available Virtual  : 23965 MB
+#-----------------------------------------------------------
+source top_basys3.tcl -notrace
+Command: read_checkpoint -auto_incremental -incremental /home/b83c/hw/asic_xyz/asic/vivado-project-files/reaction_meter_xzy/reaction_meter_xzy.srcs/utils_1/imports/synth_1/top_basys3.dcp
+INFO: [Vivado 12-5825] Read reference checkpoint from /home/b83c/hw/asic_xyz/asic/vivado-project-files/reaction_meter_xzy/reaction_meter_xzy.srcs/utils_1/imports/synth_1/top_basys3.dcp for incremental synthesis
+INFO: [Vivado 12-7989] Please ensure there are no constraint changes
+Command: synth_design -top top_basys3 -part xc7a35tcpg236-1
+Starting synth_design
+Attempting to get a license for feature 'Synthesis' and/or device 'xc7a35t'
+INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7a35t'
+INFO: [Device 21-403] Loading part xc7a35tcpg236-1
+INFO: [Designutils 20-5440] No compile time benefit to using incremental synthesis; A full resynthesis will be run
+INFO: [Designutils 20-4379] Flow is switching to default flow due to incremental criteria not met. If you would like to alter this behaviour and have the flow terminate instead, please set the following parameter config_implementation {autoIncr.Synth.RejectBehavior Terminate}
+INFO: [Synth 8-7079] Multithreading enabled for synth_design using a maximum of 7 processes.
+INFO: [Synth 8-7078] Launching helper process for spawning children vivado processes
+INFO: [Synth 8-7075] Helper process launched with PID 329857
+---------------------------------------------------------------------------------
+Starting RTL Elaboration : Time (s): cpu = 00:00:06 ; elapsed = 00:00:07 . Memory (MB): peak = 2195.766 ; gain = 481.875 ; free physical = 4049 ; free virtual = 21762
+---------------------------------------------------------------------------------
+INFO: [Synth 8-6157] synthesizing module 'top_basys3' [/home/b83c/hw/asic_xyz/asic/src/top_basys3.sv:4]
+INFO: [Synth 8-6157] synthesizing module 'debouncer' [/home/b83c/hw/asic_xyz/asic/src/debouncer.sv:3]
+	Parameter DEPTH bound to: 32'b00000000000000000000000000000010 
+	Parameter INVERT bound to: 1'b0 
+INFO: [Synth 8-294] found qualifier unique on case statement: implementing as parallel_case [/home/b83c/hw/asic_xyz/asic/src/debouncer.sv:38]
+INFO: [Synth 8-6155] done synthesizing module 'debouncer' (0#1) [/home/b83c/hw/asic_xyz/asic/src/debouncer.sv:3]
+INFO: [Synth 8-6157] synthesizing module 'generic_counter' [/home/b83c/hw/asic_xyz/asic/src/generic_counter.sv:4]
+	Parameter MAX bound to: 100000 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'generic_counter' (0#1) [/home/b83c/hw/asic_xyz/asic/src/generic_counter.sv:4]
+INFO: [Synth 8-6157] synthesizing module 'generic_counter__parameterized0' [/home/b83c/hw/asic_xyz/asic/src/generic_counter.sv:4]
+	Parameter MAX bound to: 5000 - type: integer 
+	Parameter ONESHOT bound to: 32'b00000000000000000000000000000001 
+INFO: [Synth 8-6155] done synthesizing module 'generic_counter__parameterized0' (0#1) [/home/b83c/hw/asic_xyz/asic/src/generic_counter.sv:4]
+INFO: [Synth 8-6157] synthesizing module 'lfsr' [/home/b83c/hw/asic_xyz/asic/src/lfsr.sv:4]
+	Parameter MIN bound to: 32'b00000000000000000000011111010000 
+	Parameter MAX bound to: 32'b00000000000000000001001110001000 
+INFO: [Synth 8-6155] done synthesizing module 'lfsr' (0#1) [/home/b83c/hw/asic_xyz/asic/src/lfsr.sv:4]
+INFO: [Synth 8-6157] synthesizing module 'generic_countdown_counter' [/home/b83c/hw/asic_xyz/asic/src/generic_countdown_counter.sv:4]
+	Parameter MAX bound to: 32'b00000000000000000010011100010000 
+INFO: [Synth 8-6155] done synthesizing module 'generic_countdown_counter' (0#1) [/home/b83c/hw/asic_xyz/asic/src/generic_countdown_counter.sv:4]
+WARNING: [Synth 8-689] width (13) of port connection 'load_val' does not match port width (14) of module 'generic_countdown_counter' [/home/b83c/hw/asic_xyz/asic/src/top_basys3.sv:111]
+INFO: [Synth 8-6157] synthesizing module 'state' [/home/b83c/hw/asic_xyz/asic/src/state.sv:4]
+INFO: [Synth 8-6155] done synthesizing module 'state' (0#1) [/home/b83c/hw/asic_xyz/asic/src/state.sv:4]
+INFO: [Synth 8-294] found qualifier unique on case statement: implementing as parallel_case [/home/b83c/hw/asic_xyz/asic/src/top_basys3.sv:193]
+INFO: [Synth 8-6157] synthesizing module 'anim_ctrl' [/home/b83c/hw/asic_xyz/asic/src/anim_ctrl.sv:4]
+	Parameter SIM_MODE bound to: 0 - type: integer 
+	Parameter HIST_DEPTH bound to: 8 - type: integer 
+INFO: [Synth 8-155] case statement is not full and has no default [/home/b83c/hw/asic_xyz/asic/src/anim_ctrl.sv:231]
+INFO: [Synth 8-226] default block is never used [/home/b83c/hw/asic_xyz/asic/src/anim_ctrl.sv:56]
+INFO: [Synth 8-155] case statement is not full and has no default [/home/b83c/hw/asic_xyz/asic/src/anim_ctrl.sv:264]
+INFO: [Synth 8-6155] done synthesizing module 'anim_ctrl' (0#1) [/home/b83c/hw/asic_xyz/asic/src/anim_ctrl.sv:4]
+INFO: [Synth 8-6157] synthesizing module 'seven_seg' [/home/b83c/hw/asic_xyz/asic/src/seven_seg.sv:3]
+INFO: [Synth 8-6155] done synthesizing module 'seven_seg' (0#1) [/home/b83c/hw/asic_xyz/asic/src/seven_seg.sv:3]
+INFO: [Synth 8-6157] synthesizing module 'buzzer' [/home/b83c/hw/asic_xyz/asic/src/buzzer.sv:3]
+INFO: [Synth 8-6155] done synthesizing module 'buzzer' (0#1) [/home/b83c/hw/asic_xyz/asic/src/buzzer.sv:3]
+INFO: [Synth 8-6155] done synthesizing module 'top_basys3' (0#1) [/home/b83c/hw/asic_xyz/asic/src/top_basys3.sv:4]
+WARNING: [Synth 8-7137] Register ss_reg in module debouncer has both Set and reset with same priority. This may cause simulation mismatches. Consider rewriting code  [/home/b83c/hw/asic_xyz/asic/src/debouncer.sv:38]
+WARNING: [Synth 8-6014] Unused sequential element bi_center_d1_reg was removed.  [/home/b83c/hw/asic_xyz/asic/src/anim_ctrl.sv:109]
+WARNING: [Synth 8-6014] Unused sequential element bi_center_rise_d1_reg was removed.  [/home/b83c/hw/asic_xyz/asic/src/anim_ctrl.sv:252]
+WARNING: [Synth 8-6014] Unused sequential element hold_up_reg was removed.  [/home/b83c/hw/asic_xyz/asic/src/top_basys3.sv:184]
+WARNING: [Synth 8-6014] Unused sequential element hold_down_reg was removed.  [/home/b83c/hw/asic_xyz/asic/src/top_basys3.sv:185]
+WARNING: [Synth 8-3936] Found unconnected internal register 'bi_d1_reg' and it is trimmed from '5' to '4' bits. [/home/b83c/hw/asic_xyz/asic/src/top_basys3.sv:145]
+WARNING: [Synth 8-3917] design top_basys3 has port led[15] driven by constant 0
+WARNING: [Synth 8-3917] design top_basys3 has port led[14] driven by constant 0
+WARNING: [Synth 8-3917] design top_basys3 has port led[13] driven by constant 0
+WARNING: [Synth 8-3917] design top_basys3 has port led[12] driven by constant 0
+WARNING: [Synth 8-3917] design top_basys3 has port led[11] driven by constant 0
+WARNING: [Synth 8-3917] design top_basys3 has port led[10] driven by constant 0
+WARNING: [Synth 8-3917] design top_basys3 has port led[9] driven by constant 0
+WARNING: [Synth 8-3917] design top_basys3 has port led[8] driven by constant 0
+WARNING: [Synth 8-3917] design top_basys3 has port led[7] driven by constant 0
+WARNING: [Synth 8-3917] design top_basys3 has port led[6] driven by constant 0
+WARNING: [Synth 8-3917] design top_basys3 has port led[5] driven by constant 0
+WARNING: [Synth 8-3917] design top_basys3 has port led[4] driven by constant 0
+WARNING: [Synth 8-3917] design top_basys3 has port led[3] driven by constant 0
+WARNING: [Synth 8-3917] design top_basys3 has port led[2] driven by constant 0
+WARNING: [Synth 8-3917] design top_basys3 has port led[1] driven by constant 0
+WARNING: [Synth 8-7129] Port hist_wr[2] in module anim_ctrl is either unconnected or has no load
+WARNING: [Synth 8-7129] Port hist_wr[1] in module anim_ctrl is either unconnected or has no load
+WARNING: [Synth 8-7129] Port hist_wr[0] in module anim_ctrl is either unconnected or has no load
+WARNING: [Synth 8-7129] Port bi_center in module anim_ctrl is either unconnected or has no load
+WARNING: [Synth 8-7129] Port bi[1] in module state is either unconnected or has no load
+WARNING: [Synth 8-7129] Port bi[0] in module state is either unconnected or has no load
+---------------------------------------------------------------------------------
+Finished RTL Elaboration : Time (s): cpu = 00:00:09 ; elapsed = 00:00:09 . Memory (MB): peak = 2292.703 ; gain = 578.812 ; free physical = 3933 ; free virtual = 21647
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:09 ; elapsed = 00:00:09 . Memory (MB): peak = 2304.578 ; gain = 590.688 ; free physical = 3925 ; free virtual = 21638
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:09 ; elapsed = 00:00:09 . Memory (MB): peak = 2304.578 ; gain = 590.688 ; free physical = 3925 ; free virtual = 21638
+---------------------------------------------------------------------------------
+Netlist sorting complete. Time (s): cpu = 00:00:00.04 ; elapsed = 00:00:00.04 . Memory (MB): peak = 2304.578 ; gain = 0.000 ; free physical = 3925 ; free virtual = 21638
+INFO: [Project 1-570] Preparing netlist for logic optimization
+
+Processing XDC Constraints
+Initializing timing engine
+Parsing XDC File [/home/b83c/hw/asic_xyz/asic/cons.xdc]
+Finished Parsing XDC File [/home/b83c/hw/asic_xyz/asic/cons.xdc]
+INFO: [Project 1-236] Implementation specific constraints were found while reading constraint file [/home/b83c/hw/asic_xyz/asic/cons.xdc]. These constraints will be ignored for synthesis but will be used in implementation. Impacted constraints are listed in the file [.Xil/top_basys3_propImpl.xdc].
+Resolution: To avoid this warning, move constraints listed in [.Xil/top_basys3_propImpl.xdc] to another XDC file and exclude this new file from synthesis with the used_in_synthesis property (File Properties dialog in GUI) and re-run elaboration/synthesis.
+Completed Processing XDC Constraints
+
+Netlist sorting complete. Time (s): cpu = 00:00:00.01 ; elapsed = 00:00:00 . Memory (MB): peak = 2415.348 ; gain = 0.000 ; free physical = 3913 ; free virtual = 21627
+INFO: [Project 1-111] Unisim Transformation Summary:
+No Unisim elements were transformed.
+
+Constraint Validation Runtime : Time (s): cpu = 00:00:00.02 ; elapsed = 00:00:00.02 . Memory (MB): peak = 2415.383 ; gain = 0.000 ; free physical = 3913 ; free virtual = 21626
+INFO: [Designutils 20-5440] No compile time benefit to using incremental synthesis; A full resynthesis will be run
+INFO: [Designutils 20-4379] Flow is switching to default flow due to incremental criteria not met. If you would like to alter this behaviour and have the flow terminate instead, please set the following parameter config_implementation {autoIncr.Synth.RejectBehavior Terminate}
+---------------------------------------------------------------------------------
+Finished Constraint Validation : Time (s): cpu = 00:00:19 ; elapsed = 00:00:19 . Memory (MB): peak = 2415.383 ; gain = 701.492 ; free physical = 3918 ; free virtual = 21632
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Loading Part and Timing Information
+---------------------------------------------------------------------------------
+Loading part: xc7a35tcpg236-1
+---------------------------------------------------------------------------------
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:19 ; elapsed = 00:00:19 . Memory (MB): peak = 2423.352 ; gain = 709.461 ; free physical = 3918 ; free virtual = 21632
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Applying 'set_property' XDC Constraints
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:19 ; elapsed = 00:00:19 . Memory (MB): peak = 2423.352 ; gain = 709.461 ; free physical = 3918 ; free virtual = 21632
+---------------------------------------------------------------------------------
+INFO: [Synth 8-802] inferred FSM for state register 'state_reg' in module 'state'
+INFO: [Synth 8-802] inferred FSM for state register 'fade_phase_reg' in module 'anim_ctrl'
+INFO: [Synth 8-802] inferred FSM for state register 'disp_phase_reg' in module 'anim_ctrl'
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+*
+                    IDLE |                              000 | 00000000000000000000000000000000
+                    INIT |                              001 | 00000000000000000000000000000001
+               TRIGGERED |                              010 | 00000000000000000000000000000010
+                    SPAM |                              011 | 00000000000000000000000000000101
+               MEASURING |                              100 | 00000000000000000000000000000011
+                MEASURED |                              101 | 00000000000000000000000000000100
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3354] encoded FSM with state register 'state_reg' using encoding 'sequential' in module 'state'
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+                 iSTATE1 |                               00 |                              000
+                 iSTATE2 |                               01 |                              001
+                 iSTATE0 |                               10 |                              010
+*
+                  iSTATE |                               11 |                              011
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3354] encoded FSM with state register 'fade_phase_reg' using encoding 'sequential' in module 'anim_ctrl'
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+                 iSTATE1 |                               00 |                               00
+                  iSTATE |                               01 |                               01
+                 iSTATE0 |                               10 |                               10
+                 iSTATE2 |                               11 |                               11
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3354] encoded FSM with state register 'disp_phase_reg' using encoding 'sequential' in module 'anim_ctrl'
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:21 ; elapsed = 00:00:21 . Memory (MB): peak = 2423.352 ; gain = 709.461 ; free physical = 3920 ; free virtual = 21635
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start RTL Component Statistics 
+---------------------------------------------------------------------------------
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input   32 Bit       Adders := 1     
+	   2 Input   19 Bit       Adders := 1     
+	   4 Input   16 Bit       Adders := 1     
+	   2 Input   13 Bit       Adders := 2     
+	   2 Input   11 Bit       Adders := 1     
+	   2 Input   10 Bit       Adders := 2     
+	   3 Input    5 Bit       Adders := 1     
+	   2 Input    4 Bit       Adders := 60    
+	   2 Input    3 Bit       Adders := 7     
++---XORs : 
+	   5 Input      1 Bit         XORs := 1     
++---Registers : 
+	               32 Bit    Registers := 1     
+	               19 Bit    Registers := 2     
+	               16 Bit    Registers := 2     
+	               13 Bit    Registers := 10    
+	               11 Bit    Registers := 1     
+	               10 Bit    Registers := 3     
+	                4 Bit    Registers := 84    
+	                3 Bit    Registers := 5     
+	                1 Bit    Registers := 90    
++---Muxes : 
+	   2 Input   32 Bit        Muxes := 160   
+	   6 Input   32 Bit        Muxes := 1     
+	   2 Input   19 Bit        Muxes := 5     
+	   2 Input   15 Bit        Muxes := 2     
+	   2 Input   13 Bit        Muxes := 2     
+	   5 Input   13 Bit        Muxes := 1     
+	   2 Input   11 Bit        Muxes := 2     
+	   5 Input   11 Bit        Muxes := 1     
+	   4 Input   11 Bit        Muxes := 1     
+	   2 Input   10 Bit        Muxes := 15    
+	   4 Input   10 Bit        Muxes := 1     
+	   5 Input   10 Bit        Muxes := 1     
+	   2 Input    7 Bit        Muxes := 16    
+	   4 Input    7 Bit        Muxes := 5     
+	   7 Input    7 Bit        Muxes := 4     
+	   2 Input    4 Bit        Muxes := 54    
+	   5 Input    4 Bit        Muxes := 1     
+	   7 Input    4 Bit        Muxes := 2     
+	   7 Input    3 Bit        Muxes := 1     
+	   2 Input    3 Bit        Muxes := 6     
+	   5 Input    3 Bit        Muxes := 1     
+	   3 Input    3 Bit        Muxes := 1     
+	   7 Input    2 Bit        Muxes := 1     
+	  10 Input    2 Bit        Muxes := 1     
+	   2 Input    1 Bit        Muxes := 693   
+	   7 Input    1 Bit        Muxes := 3     
+	   5 Input    1 Bit        Muxes := 12    
+	   3 Input    1 Bit        Muxes := 6     
+	   4 Input    1 Bit        Muxes := 3     
+---------------------------------------------------------------------------------
+Finished RTL Component Statistics 
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Part Resource Summary
+---------------------------------------------------------------------------------
+Part Resources:
+DSPs: 90 (col length:60)
+BRAMs: 100 (col length: RAMB18 60 RAMB36 30)
+---------------------------------------------------------------------------------
+Finished Part Resource Summary
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Cross Boundary and Area Optimization
+---------------------------------------------------------------------------------
+WARNING: [Synth 8-3917] design top_basys3 has port led[15] driven by constant 0
+WARNING: [Synth 8-3917] design top_basys3 has port led[14] driven by constant 0
+WARNING: [Synth 8-3917] design top_basys3 has port led[13] driven by constant 0
+WARNING: [Synth 8-3917] design top_basys3 has port led[12] driven by constant 0
+WARNING: [Synth 8-3917] design top_basys3 has port led[11] driven by constant 0
+WARNING: [Synth 8-3917] design top_basys3 has port led[10] driven by constant 0
+WARNING: [Synth 8-3917] design top_basys3 has port led[9] driven by constant 0
+WARNING: [Synth 8-3917] design top_basys3 has port led[8] driven by constant 0
+WARNING: [Synth 8-3917] design top_basys3 has port led[7] driven by constant 0
+WARNING: [Synth 8-3917] design top_basys3 has port led[6] driven by constant 0
+WARNING: [Synth 8-3917] design top_basys3 has port led[5] driven by constant 0
+WARNING: [Synth 8-3917] design top_basys3 has port led[4] driven by constant 0
+WARNING: [Synth 8-3917] design top_basys3 has port led[3] driven by constant 0
+WARNING: [Synth 8-3917] design top_basys3 has port led[2] driven by constant 0
+WARNING: [Synth 8-3917] design top_basys3 has port led[1] driven by constant 0
+WARNING: [Synth 8-7129] Port hist_wr[2] in module anim_ctrl is either unconnected or has no load
+WARNING: [Synth 8-7129] Port hist_wr[1] in module anim_ctrl is either unconnected or has no load
+WARNING: [Synth 8-7129] Port hist_wr[0] in module anim_ctrl is either unconnected or has no load
+WARNING: [Synth 8-7129] Port bi_center in module anim_ctrl is either unconnected or has no load
+WARNING: [Synth 8-7129] Port bi[1] in module state is either unconnected or has no load
+WARNING: [Synth 8-7129] Port bi[0] in module state is either unconnected or has no load
+---------------------------------------------------------------------------------
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:39 ; elapsed = 00:00:40 . Memory (MB): peak = 2467.359 ; gain = 753.469 ; free physical = 4114 ; free virtual = 21310
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Applying XDC Timing Constraints
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:49 ; elapsed = 00:00:50 . Memory (MB): peak = 2492.359 ; gain = 778.469 ; free physical = 4155 ; free virtual = 20927
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Timing Optimization
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Timing Optimization : Time (s): cpu = 00:00:53 ; elapsed = 00:00:54 . Memory (MB): peak = 2535.406 ; gain = 821.516 ; free physical = 4059 ; free virtual = 20915
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Technology Mapping
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Technology Mapping : Time (s): cpu = 00:00:55 ; elapsed = 00:00:56 . Memory (MB): peak = 2593.414 ; gain = 879.523 ; free physical = 4215 ; free virtual = 21071
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished IO Insertion : Time (s): cpu = 00:01:03 ; elapsed = 00:01:04 . Memory (MB): peak = 2694.227 ; gain = 980.336 ; free physical = 3663 ; free virtual = 20530
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Instances
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Instances : Time (s): cpu = 00:01:03 ; elapsed = 00:01:04 . Memory (MB): peak = 2694.227 ; gain = 980.336 ; free physical = 3663 ; free virtual = 20530
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Rebuilding User Hierarchy
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:01:03 ; elapsed = 00:01:05 . Memory (MB): peak = 2694.227 ; gain = 980.336 ; free physical = 3664 ; free virtual = 20531
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Ports
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Ports : Time (s): cpu = 00:01:03 ; elapsed = 00:01:05 . Memory (MB): peak = 2694.227 ; gain = 980.336 ; free physical = 3664 ; free virtual = 20531
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:01:03 ; elapsed = 00:01:05 . Memory (MB): peak = 2694.227 ; gain = 980.336 ; free physical = 3664 ; free virtual = 20531
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Nets
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Nets : Time (s): cpu = 00:01:03 ; elapsed = 00:01:05 . Memory (MB): peak = 2694.227 ; gain = 980.336 ; free physical = 3664 ; free virtual = 20531
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Writing Synthesis Report
+---------------------------------------------------------------------------------
+
+Report BlackBoxes: 
++-+--------------+----------+
+| |BlackBox name |Instances |
++-+--------------+----------+
++-+--------------+----------+
+
+Report Cell Usage: 
++------+-------+------+
+|      |Cell   |Count |
++------+-------+------+
+|1     |BUFG   |     1|
+|2     |CARRY4 |    40|
+|3     |LUT1   |    24|
+|4     |LUT2   |    49|
+|5     |LUT3   |   166|
+|6     |LUT4   |   224|
+|7     |LUT5   |   115|
+|8     |LUT6   |   383|
+|9     |FDCE   |   582|
+|10    |FDPE   |    12|
+|11    |FDRE   |    73|
+|12    |IBUF   |     6|
+|13    |OBUF   |    29|
++------+-------+------+
+---------------------------------------------------------------------------------
+Finished Writing Synthesis Report : Time (s): cpu = 00:01:03 ; elapsed = 00:01:05 . Memory (MB): peak = 2694.227 ; gain = 980.336 ; free physical = 3664 ; free virtual = 20531
+---------------------------------------------------------------------------------
+Synthesis finished with 0 errors, 0 critical warnings and 21 warnings.
+Synthesis Optimization Runtime : Time (s): cpu = 00:01:00 ; elapsed = 00:01:02 . Memory (MB): peak = 2694.227 ; gain = 869.531 ; free physical = 3664 ; free virtual = 20531
+Synthesis Optimization Complete : Time (s): cpu = 00:01:03 ; elapsed = 00:01:05 . Memory (MB): peak = 2694.234 ; gain = 980.336 ; free physical = 3664 ; free virtual = 20531
+INFO: [Project 1-571] Translating synthesized netlist
+Netlist sorting complete. Time (s): cpu = 00:00:05 ; elapsed = 00:00:00.02 . Memory (MB): peak = 2694.234 ; gain = 0.000 ; free physical = 3814 ; free virtual = 20683
+INFO: [Netlist 29-17] Analyzing 40 Unisim elements for replacement
+INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
+INFO: [Project 1-570] Preparing netlist for logic optimization
+INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2750.254 ; gain = 0.000 ; free physical = 3859 ; free virtual = 20728
+INFO: [Project 1-111] Unisim Transformation Summary:
+No Unisim elements were transformed.
+
+Synth Design complete | Checksum: 54df30f9
+INFO: [Common 17-83] Releasing license: Synthesis
+52 Infos, 49 Warnings, 0 Critical Warnings and 0 Errors encountered.
+synth_design completed successfully
+synth_design: Time (s): cpu = 00:01:17 ; elapsed = 00:01:13 . Memory (MB): peak = 2750.289 ; gain = 1174.484 ; free physical = 3856 ; free virtual = 20726
+INFO: [Common 17-2834] synth_design peak Physical Memory [PSS] (MB): overall = 2100.457; main = 1955.366; forked = 337.325
+INFO: [Common 17-2834] synth_design peak Virtual Memory [VSS] (MB): overall = 3584.000; main = 2750.258; forked = 990.582
+Write ShapeDB Complete: Time (s): cpu = 00:00:00.01 ; elapsed = 00:00:00 . Memory (MB): peak = 2774.266 ; gain = 0.000 ; free physical = 3856 ; free virtual = 20726
+INFO: [Common 17-1381] The checkpoint '/home/b83c/hw/asic_xyz/asic/vivado-project-files/reaction_meter_xzy/reaction_meter_xzy.runs/synth_1/top_basys3.dcp' has been generated.
+INFO: [Vivado 12-24828] Executing command : report_utilization -file top_basys3_utilization_synth.rpt -pb top_basys3_utilization_synth.pb
+INFO: [Common 17-206] Exiting Vivado at Sat Jun 20 23:43:46 2026...
